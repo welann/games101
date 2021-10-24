@@ -1,0 +1,3 @@
+/home/welann/games/1/CMakeFiles/rebuild_cache.dir
+/home/welann/games/1/CMakeFiles/Rasterizer.dir
+/home/welann/games/1/CMakeFiles/edit_cache.dir

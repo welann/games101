@@ -1,0 +1,3 @@
+/home/welann/games/0/CMakeFiles/rebuild_cache.dir
+/home/welann/games/0/CMakeFiles/Transformation.dir
+/home/welann/games/0/CMakeFiles/edit_cache.dir
