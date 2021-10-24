@@ -146,6 +146,7 @@ Eigen::Matrix4f get_rotation(Eigen::Vector3f axis, float angle) {
 
     Eigen::Matrix3f tmp = cs*one + (1-cs)*axis*axis.transpose() + sn*cross;
 
+//
     for(int i = 0;i < 4;i ++) {
         for(int j = 0;j < 4;j ++) {
             if(i < 3 && j < 3)
