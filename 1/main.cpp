@@ -12,8 +12,10 @@ Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
     Eigen::Matrix4f view = Eigen::Matrix4f::Identity();
 
     Eigen::Matrix4f translate;
-    translate << 1, 0, 0, -eye_pos[0], 0, 1, 0, -eye_pos[1], 0, 0, 1,
-        -eye_pos[2], 0, 0, 0, 1;
+    translate << 1, 0, 0, -eye_pos[0],
+                 0, 1, 0, -eye_pos[1], 
+                 0, 0, 1, -eye_pos[2], 
+                 0, 0, 0, 1;
 
     view = translate * view;
 
@@ -36,9 +38,9 @@ Eigen::Matrix4f get_model_matrix(float rotation_angle)
     double radian = rotation_angle / 180.0 * MY_PI;
 
     translate << cos(radian), -sin(radian), 0, 0,
-            sin(radian),  cos(radian), 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1;
+                 sin(radian),  cos(radian), 0, 0,
+                 0, 0, 1, 0,
+                 0, 0, 0, 1;
 
     model = translate * model;
 
@@ -106,10 +108,6 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
     //                         0,0,zNear+zFar,-1*(zNear*zFar),\
     //                         0,0,1,0;
     // projection = orthographic_matrix*presp_to_ortho_matrix;
-
-
-
-
 
 
     return projection;

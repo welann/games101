@@ -125,7 +125,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t) {
 
     double minX, maxX, minY, maxY;
     minX = maxX = v[0][0];
-    minX = maxX = v[0][1];
+    minY = maxY = v[0][1];
     for(int i = 0;i < 3;i ++) {
         minX = std::min(minX, (double)v[i][0]);
         maxX = std::max(maxX, (double)v[i][0]);
@@ -137,6 +137,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t) {
     for(int ix = minX; ix <= maxX; ix ++) {
         for(int iy = minY; iy <= maxY; iy ++) {
             int id = 0;
+            //下面进行N*N的遍历，
             for(int i = 0;i < N;i ++) {
                 for(int j = 0;j < N;j ++) {
                     float d = 1.0 / (2 * N);
@@ -157,20 +158,18 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t) {
                         //     set_pixel(p, t.getColor());
                         // }
                     }
-
                     id ++;
                 }
             }
-
             Eigen::Vector3f color = {0, 0, 0};
             id = 0;
             for(int i = 0;i < N;i ++) {
                 for(int j = 0;j < N;j ++) {
+                    //将所有得到的颜色值相加，等下求平均
                     color += depColor[get_index(ix, iy)][id].second;
                     id ++;
                 }
             }
-
             color /= N*N;
             set_pixel(Eigen::Vector3f(ix, iy, 1), color);
         }
