@@ -71,7 +71,7 @@ void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window)
 
 int main() 
 {
-    cv::Mat window = cv::Mat(700, 700, CV_8UC3, cv::Scalar(0));
+    cv::Mat window = cv::Mat(800, 800, CV_8UC3, cv::Scalar(0));
     cv::cvtColor(window, window, cv::COLOR_BGR2RGB);
     cv::namedWindow("Bezier Curve", cv::WINDOW_AUTOSIZE);
 

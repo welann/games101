@@ -140,11 +140,16 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload& payload)
     Eigen::Vector3f normal = payload.normal;
 
     Eigen::Vector3f result_color = {0, 0, 0};
+    // Eigen::Vector3f ambient = ka * amb_light_intensity[0];
 
     for (auto& light : lights)
     {
         // TODO: For each light source in the code, calculate what the *ambient*, *diffuse*, and *specular* 
         // components are. Then, accumulate that result on the *result_color* object.
+
+        // Eigen::Vector3f light_dir = light.position - point;
+		// Eigen::Vector3f view_dir = eye_pos - point;
+
         float r = (light.position - point).norm();
         auto l = (light.position - point).normalized();
         auto n = normal.normalized();
@@ -339,20 +344,20 @@ int main(int argc, const char** argv)
     std::string filename = "output.png";
     objl::Loader Loader;
 
-    // std::string obj_path = "../models/spot/";
-    // auto texture_path = "hmap.jpg";
-    // auto texture_file = "spot_texture.png";
-    // auto obj_file = "spot_triangulated_good.obj";
+    std::string obj_path = "../models/spot/";
+    auto texture_path = "hmap.jpg";
+    auto texture_file = "spot_texture.png";
+    auto obj_file = "spot_triangulated_good.obj";
 
     // std::string obj_path = "../models/Crate/";
     // auto texture_path = "CrateImage2.JPG";
     // auto texture_file = "crate_1.jpg";
     // auto obj_file = "Crate1.obj";    
 
-    std::string obj_path = "../models/cube/";
-    auto texture_path = "wall.tif";
-    auto texture_file = "wall1.tif";
-    auto obj_file = "cube.obj";    
+    // std::string obj_path = "../models/cube/";
+    // auto texture_path = "wall.tif";
+    // auto texture_file = "wall1.tif";
+    // auto obj_file = "cube.obj";    
 
     // std::string obj_path = "../models/rock/";
     // auto texture_path = "rock.png";
